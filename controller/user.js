@@ -77,7 +77,7 @@ const signInHandler = async (req, res) => {
     if (!match) return res.json({ success: false, message: 'Password salah' });
     try {
         const { id, name } = user;
-        const accessToken = jwt.sign({ id, name, email }, process.env.ACCSESS_TOKEN, {
+        const accessToken = jwt.sign({ id, name, email }, process.env.ACCESS_TOKEN, {
             expiresIn: '25s',
         });
         const refreshToken = jwt.sign({ id, name, email }, process.env.REFRESH_TOKEN);
