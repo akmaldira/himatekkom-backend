@@ -98,7 +98,30 @@ const signInHandler = async (req, res) => {
     }
 };
 
+const logoutHandler = async (req, res) => {
+    const tokenCookie = req.cookies.refreshToken;
+    if (!tokenCookie) return res.status(204).json({ status: false, message: 'Cookie tidak ditemukan' });
+    const user = await Users.findOne({
+        where: {
+            refresh_token: tokenCookie,
+        },
+    });
+    if (!user) return res.status(204).json({ status: false, message: 'Cookie tidak valid' });
+    try {
+        await Users.update({ refresh_token: null }, {
+            where: {
+                id: user.id,
+            },
+        });
+        res.clearCookie('refreshToken');
+        res.status(200).json({ status: true, message: 'Berhasil logout' });
+    } catch (err) {
+        return res.status(500).json({ status: false, message: 'Server error' });
+    }
+};
+
 module.exports = {
     signUpHandler,
     signInHandler,
+    logoutHandler,
 };

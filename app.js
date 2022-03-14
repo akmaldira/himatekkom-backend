@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const userRouter = require('./routes/user');
 const db = require('./config/database');
 
@@ -9,6 +11,8 @@ dotenv.config();
 const port = 5000 || process.env.PORT;
 
 app.use(cors());
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
 db.authenticate()

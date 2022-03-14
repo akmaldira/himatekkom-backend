@@ -16,6 +16,8 @@
         "linebreak-style": 0,
         "indent": ["error", 4],
         "arrow-body-style": "off",
-        "no-else-return": "off"
+        "no-else-return": "off",
+        "consistent-return": "off",
+        "dot-notation": "off"
     }
 }
