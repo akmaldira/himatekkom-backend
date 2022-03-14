@@ -6,19 +6,12 @@ const signUpHandler = async (req, res) => {
     const {
         name,
         email,
-        confirmEmail,
         password,
     } = req.body;
     if (name === undefined) {
         return res.json({
             success: false,
             message: 'Nama tidak boleh kosong',
-        });
-    }
-    if (email !== confirmEmail) {
-        return res.status(400).json({
-            success: false,
-            message: 'Konfirmasi email tidak boleh kosong atau berbeda dengan email',
         });
     }
     try {
