@@ -1,7 +1,7 @@
 # himatekkom-backend
 
-Not update again cause himatekkom server not support with node js :(
-So i'll create himatekkom-backend with laravel soon
+No update again cause himatekkom's server does not support node js engine :(
+So we'll create himatekkom-backend with laravel soon
 
 how to use?
 - npm install
